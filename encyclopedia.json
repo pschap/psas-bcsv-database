@@ -1,14 +1,13 @@
 {
     "gameattributes.bcsv": {
-        "documentedColumns": "0/42",
+        "documentedColumns": "6/42",
         "description": null,
         "namedColumns": "42/42",
         "name": "gameattributes",
         "hashes": [
             {          
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Aura_Multiplier",
                 "alias": null,
                 "hash": "0x4d0df068",
@@ -16,8 +15,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Aura_SizeMax",
                 "alias": null,
                 "hash": "0x46496af4",
@@ -25,62 +23,55 @@
             },
             {              
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,             
                 "name": "Aura_SizeMin",
                 "alias": null,
                 "hash": "0x3435c6e6",
                 "datatype": "float"
             },
             {              
-                "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "notes": "AP Amount given by all light (normally 10 AP) moves.",
+                "knownFunctionality": true,               
                 "name": "AP_Amount_Light",
                 "alias": null,
                 "hash": "0xbb0c224a",
                 "datatype": "float"
             },
             {               
-                "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "notes": "AP Amount given by all normal (normally 20 AP) moves.",
+                "knownFunctionality": true,               
                 "name": "AP_Amount_Medium",
                 "alias": null,
                 "hash": "0xf1b3634d",
                 "datatype": "float"
             },
             {               
-                "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "notes": "AP Amount given by all heavy (normally 30 AP) moves.",
+                "knownFunctionality": true,               
                 "name": "AP_Amount_Heavy",
                 "alias": null,
                 "hash": "0xf5ff870d",
                 "datatype": "float"
             },
             {               
-                "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "notes": "Block push dealt by all weak moves.",
+                "knownFunctionality": true,               
                 "name": "BlockPush_Weak",
                 "alias": null,
                 "hash": "0xb3863133",
                 "datatype": "float"
             },
             {               
-                "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "notes": "Block push dealt by all normal moves.",
+                "knownFunctionality": true,         
                 "name": "BlockPush_Normal",
                 "alias": null,
                 "hash": "0x57c83b70",
                 "datatype": "float"
             },
             {                
-                "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "notes": "Block push dealt by all strong moves.",
+                "knownFunctionality": true,
                 "name": "BlockPush_Strong",
                 "alias": null,
                 "hash": "0x58908810",
@@ -88,8 +79,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,                
                 "name": "Health_Weak",
                 "alias": null,
                 "hash": "0x96c332a8",
@@ -97,8 +87,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,              
                 "name": "Health_Normal",
                 "alias": null,
                 "hash": "0xa9da28d3",
@@ -106,8 +95,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Health_Strong",
                 "alias": null,
                 "hash": "0xf4a605c7",
@@ -115,8 +103,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "KillStreak_KillCount",
                 "alias": null,
                 "hash": "0x100c8447",
@@ -124,8 +111,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "MultiKill_KillCount",
                 "alias": null,
                 "hash": "0x97fc0d0a",
@@ -133,8 +119,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "MultiKill_Timer",
                 "alias": null,
                 "hash": "0xd4a4bba0",
@@ -142,8 +127,7 @@
             },
             {                
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "RoundSequence_CharacterIntroTime",
                 "alias": null,
                 "hash": "0xbdd2e3d9",
@@ -151,8 +135,7 @@
             },
             {                
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "RoundSequence_CharacterReadyTime",
                 "alias": null,
                 "hash": "0x8be75424",
@@ -160,8 +143,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "RoundSequence_CharacterScoreTime",
                 "alias": null,
                 "hash": "0xca7ed515",
@@ -169,8 +151,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "RoundSequence_TimesUpDuration",
                 "alias": null,
                 "hash": "0x1d15162e",
@@ -178,8 +159,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "RoundSequence_OvertimeDuration",
                 "alias": null,
                 "hash": "0x8a10378c",
@@ -187,8 +167,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "RoundSequence_RoundOverFirstWarningTime",
                 "alias": null,
                 "hash": "0xa13802d4",
@@ -196,8 +175,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "RoundSequence_RoundOverLastWarningTime",
                 "alias": null,
                 "hash": "0xaa2710f8",
@@ -205,8 +183,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "RoundSequence_RoundReadyTime",
                 "alias": null,
                 "hash": "0xf17676ed",
@@ -214,8 +191,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "RoundSequence_RoundStartTime",
                 "alias": null,
                 "hash": "0x87375ad6",
@@ -223,8 +199,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "RoundSequence_RoundStartNoInputTime",
                 "alias": null,
                 "hash": "0xabd97b19",
@@ -232,8 +207,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "RoundSequence_RoundEndTimeScale",
                 "alias": null,
                 "hash": "0xb360fe7b",
@@ -241,8 +215,7 @@
             },
             {                
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_Light_Intensity",
                 "alias": null,
                 "hash": "0x8ab663bd",
@@ -250,8 +223,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_Light_Time",
                 "alias": null,
                 "hash": "0x53b74c4d",
@@ -259,8 +231,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_Medium_Intensity",
                 "alias": null,
                 "hash": "0x10228c8c",
@@ -268,8 +239,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_Medium_Time",
                 "alias": null,
                 "hash": "0x1176c99e",
@@ -277,8 +247,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_Heavy_Intensity",
                 "alias": null,
                 "hash": "0x15f0ff6",
@@ -286,8 +255,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_Heavy_Time",
                 "alias": null,
                 "hash": "0xc3cc8e78",
@@ -295,8 +263,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_Twitch_Intensity",
                 "alias": null,
                 "hash": "0x311c32b0",
@@ -304,8 +271,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_Twitch_Time",
                 "alias": null,
                 "hash": "0x9f1dfa6a",
@@ -313,8 +279,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_SuperKill_Intensity",
                 "alias": null,
                 "hash": "0x3f2cd62a",
@@ -322,8 +287,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_SuperKill_Time",
                 "alias": null,
                 "hash": "0x859c4d84",
@@ -331,8 +295,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_Shock_Intensity",
                 "alias": null,
                 "hash": "0xde748627",
@@ -340,8 +303,7 @@
             },
             {                
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_Shock_Time",
                 "alias": null,
                 "hash": "0xf4506f0f",
@@ -349,8 +311,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_Win_Intensity",
                 "alias": null,
                 "hash": "0xb2b8eb97",
@@ -358,8 +319,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_Win_Time",
                 "alias": null,
                 "hash": "0x23147e3f",
@@ -367,8 +327,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_OverTime_Intensity",
                 "alias": null,
                 "hash": "0x2ec7ecc",
@@ -376,8 +335,7 @@
             },
             {               
                 "notes": null,
-                "knownFunctionality": false,
-                "type": null,
+                "knownFunctionality": false,               
                 "name": "Rumble_OverTime_Time",
                 "alias": null,
                 "hash": "0xf55f3bde",

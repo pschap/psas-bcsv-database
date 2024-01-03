@@ -169,7 +169,6 @@ def build_bcsv_encyclopedia():
                     attr_hash = game_attribute_hash(attribute, key)
 
                     column_info['hash'] = hex(attr_hash)[:-1]
-                    column_info['type'] = None
                     column_info['notes'] = None
                     column_info['name'] = attribute
                     column_info['alias'] = None

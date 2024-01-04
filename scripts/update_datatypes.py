@@ -32,11 +32,11 @@ def parse_attribute_datatype(dt):
     """
 
     if dt == 1:
-        return "float"
+        return 'float'
     elif dt == 2:
-        return "int"
+        return 'int'
     elif dt == 3:
-        return "short"
+        return 'short'
     elif dt == 4:
         # TODO
         return None
@@ -84,18 +84,18 @@ def main():
 
     # Check validity of provided BCSV file
     if not os.path.exists(bcsv) or not os.path.isfile(bcsv):
-        print("ERROR: Provided BCSV path does not exist. Exiting...")
+        print('ERROR: Provided BCSV path does not exist. Exiting...')
         return
     elif os.path.splitext(bcsv)[1] != '.bcsv':
-        print("ERROR: Provided path is not a BCSV file. Exiting...")
+        print('ERROR: Provided path is not a BCSV file. Exiting...')
         return
 
     # Check validity of provided encyclopedia
     if not os.path.exists(encyclopedia_file) or not os.path.isfile(encyclopedia_file):
-        print("ERROR: Provided encyclopedia does not exist. Exiting...")
+        print('ERROR: Provided encyclopedia does not exist. Exiting...')
         return
     if not os.path.splitext(encyclopedia_file) != '.json':
-        print("ERROR: Provided encyclopedia is not a JSON file. Exiting...")
+        print('ERROR: Provided encyclopedia is not a JSON file. Exiting...')
         return
 
     # Open encyclopedia

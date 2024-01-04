@@ -161,3 +161,7 @@ cython_debug/
 
 # Assets
 bcsv/
+
+# BCSV Imports/Exports
+exports/
+imports/

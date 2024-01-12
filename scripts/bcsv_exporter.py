@@ -19,7 +19,7 @@ def parse_args():
 
     parser = argparse.ArgumentParser(prog='bcsv_exporter.py', description='export PSASBR bcsv files to decoded csv')
 
-    parser.add_argument('-e', '--encyclopedia', type=str, required=True, help='bcsv encyclopedia')
+    parser.add_argument('-e', '--encyclopedia', type=str, default='encyclopedia.json', help='bcsv encyclopedia')
     parser.add_argument('-b', '--bcsv', type=str, required=True, help='bcsv file to export')
     parser.add_argument('-o', '--output', type=str, required=False, default='exports', help='path to write exported files')
 

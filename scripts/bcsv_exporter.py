@@ -103,16 +103,15 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia):
                     break
 
         # Read rows
-        for i in range(rows):
-            for j in range(columns):
-                offset = offsets[j]
-                dt = datatypes[j]
-
-                f.seek(offset)
+        for i in range(columns):
+            offset = offsets[i]
+            dt = datatypes[i]
+            for j in range(rows):
+                f.seek(offset + 4*j)
                 val_bytes = f.read(4)
                 val = parse_val(val_bytes, dt)
 
-                entries[i][j] = val
+                entries[j][i] = val
 
     # Write the CSV
     with open(csv_file, 'w') as f:

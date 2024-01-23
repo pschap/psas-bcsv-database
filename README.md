@@ -53,5 +53,5 @@ LAB_81272a2c:
     pfVar1 = (float *)RetrieveBcsvField((int)bcsvFilePtr,uVar3);
 ```
 
-Additionally, hashes can be found using dynamic analysis/tools (such as [psas-hooks](https://github.com/pschap/psas-hooks/tree/master)) by printing out hashes as they are being passed to functions.
+Additionally, hashes can be found using dynamic analysis/tools (such as [psas-hooks](https://github.com/pschap/psas-hooks/tree/master)) by printing out hashes/column names as they are being passed to functions.
 

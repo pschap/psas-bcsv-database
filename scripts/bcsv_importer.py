@@ -119,15 +119,18 @@ def import_csv_to_bcsv(bcsv, csv_file, encyclopedia):
     hashes = encyclopedia[basename]['hashes']
     column_info = []
     for attr in hashes:
-        if attr['name'] in header:
-            info = {}
-            info['hash'] = attr['hash']
-            info['datatype'] = attr['datatype']
+        info = {}
+        info['hash'] = attr['hash']
+        info['datatype'] = attr['datatype']
 
+        if attr['name'] in header:
             idx = header.index(attr['name'])
-            attr_vals = []
-            for row in rows:
-                attr_vals.append(row[idx])
+        else:
+            idx = header.index(attr['alias'])
+            
+        attr_vals = []
+        for row in rows:
+            attr_vals.append(row[idx])
 
             info['values'] = attr_vals
             column_info.append(info)
@@ -181,7 +184,7 @@ def main():
     if not os.path.exists(encyclopedia_file) or not os.path.isfile(encyclopedia_file):
         print("ERROR: Provided encyclopedia does not exist. Exiting...")
         return
-    if not os.path.splitext(encyclopedia_file) != '.json':
+    if os.path.splitext(encyclopedia_file)[1] != '.json':
         print("ERROR: Provided encyclopedia is not a JSON file. Exiting...")
         return
 

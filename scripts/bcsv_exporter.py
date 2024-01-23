@@ -92,13 +92,13 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia):
         for i in range(columns):
             f.seek(8*i + 8)
             attr_hash = hex(int.from_bytes(f.read(4), byteorder='little'))
+            offsets[i] = 8 + i*rows*4 + columns*8
             for attr in hashes:
                 if attr_hash == attr['hash']:
                     name = attr['name']
                     alias = attr['alias']
                     name = name if name is not None else alias
                     header[i] = name 
-                    offsets[i] = 8 + i*rows*4 + columns*8
                     datatypes[i] = attr['datatype']
                     break
 
@@ -142,7 +142,7 @@ def main():
     if not os.path.exists(encyclopedia_file) or not os.path.isfile(encyclopedia_file):
         print("ERROR: Provided encyclopedia does not exist. Exiting...")
         return
-    if not os.path.splitext(encyclopedia_file) != '.json':
+    if os.path.splitext(encyclopedia_file)[1] != '.json':
         print("ERROR: Provided encyclopedia is not a JSON file. Exiting...")
         return
 

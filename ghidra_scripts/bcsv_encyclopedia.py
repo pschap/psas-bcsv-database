@@ -18,12 +18,16 @@ from ghidra.util.task import ConsoleTaskMonitor
 # Maintain a mapping of which functions read which BCSV files.
 # Map is in the form of function entry point address -> BCSV file.
 FUNC_2_BCSV = {
-    0x812728e8: 'gameattributes.bcsv'
+    0x812728e8: 'gameattributes.bcsv',
+    0x81271248: 'characterattributes.bcsv',
+    0x8126f98c: 'attackprioritiesattributes.bcsv'
 }
 
 # Maintain a mapping of where to save hashes for a particular BCSV file
 BCSV_2_JSON = {
-    'gameattributes.bcsv': 'gameattributes.json'
+    'gameattributes.bcsv': 'gameattributes.json',
+    'characterattributes.bcsv': 'characterattributes.json',
+    'attackprioritiesattributes.bcsv': 'attackprioritiesattributes.json'
 }
 
 # Encyclopedia name
@@ -122,17 +126,17 @@ def parse_hash_call_args(addr):
 
     return attribute, key
 
-def build_bcsv_encyclopedia():
+def build_bcsv_encyclopedia(encyclopedia):
     """
     Builds a dictionary containing automatically generated 
     documentation on each column for each BCSV file used by 
     PSASBR.
 
-    :return: bcsv encyclopedia
+    :param encyclopedia: the encyclopedia to add to
     """
 
-    # Call arguments
-    encyclopedia = {}
+    # Generate list of bcsv files to skip / not update entries for
+    skip = list(encyclopedia.keys())
 
     # Find all XRefs to HASHING_FUNC
     fm = currentProgram.getFunctionManager()
@@ -151,7 +155,7 @@ def build_bcsv_encyclopedia():
 
                 calling_entry = calling_func.getEntryPoint()
                 offset = calling_entry.getOffset()
-                if offset in FUNC_2_BCSV:
+                if offset in FUNC_2_BCSV and FUNC_2_BCSV[offset] not in skip:
                     bcsv = FUNC_2_BCSV[offset]
                     if bcsv not in encyclopedia:
                         # Write default info/documentation to encyclopedia entry
@@ -187,14 +191,28 @@ def build_bcsv_encyclopedia():
                     encyclopedia[bcsv]['namedColumns'] = '{}/{}'.format(named_columns, columns)
                     encyclopedia[bcsv]['documentedColumns'] = '{}/{}'.format(documented_columns, columns)
 
-    return encyclopedia
-
 # ============================================
 #                     MAIN
 # ============================================
 
 def main():
-    encyclopedia = build_bcsv_encyclopedia()
+    # Prompt to use an existing encylopedia file
+    choices = ['y', 'n']
+    choice = askChoice('Append to an existing BCSV encyclopedia?', '(Y)es/(N)o', choices, 'n')
+
+    if choice == 'y':
+        enc_file = askFile('Choose BCSV encyclopedia', 'Open').toString()
+        if os.path.splitext(enc_file)[1] != '.json':
+            print("ERROR: Provided encyclopedia is not a JSON file. Exiting...")
+            return
+        
+        with open(enc_file, 'r') as f:
+            encyclopedia = json.load(f)
+    else:
+        encyclopedia = {}
+
+    # Build the encyclopedia
+    build_bcsv_encyclopedia(encyclopedia)
 
     # Write encyclopedia as JSON
     with open(ENCYCLOPEDIA, 'w') as f:

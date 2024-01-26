@@ -1,7 +1,7 @@
 {
     "characterattributes.bcsv": {
         "documentedColumns": "11/39",
-        "description": null,
+        "description": "Character specific attributes.",
         "namedColumns": "38/39",
         "name": "characterattributes",
         "hashes": [
@@ -312,16 +312,16 @@
             {
                 "notes": null,
                 "knownFunctionality": false,
-                "datatype": "int",
+                "datatype": "magic",
                 "name": null,
-                "alias": "Unknown",
+                "alias": "Magic",
                 "hash": "0xfc8adc13"
             }
         ]
     },
     "attackprioritiesattributes.bcsv": {
         "documentedColumns": "0/11",
-        "description": null,
+        "description": "Defines which types of attacks have priorities over others.",
         "namedColumns": "10/11",
         "name": "attackprioritiesattributes",
         "hashes": [
@@ -408,16 +408,16 @@
             {
                 "notes": null,
                 "knownFunctionality": false,
-                "datatype": "int",
+                "datatype": "magic",
                 "name": null,
-                "alias": "Unknown",
+                "alias": "Magic",
                 "hash": "0xfcbb60f3"
             }
         ]
     },
     "gameattributes.bcsv": {
         "documentedColumns": "6/42",
-        "description": null,
+        "description": "One row file containing global game data.",
         "namedColumns": "42/42",
         "name": "gameattributes",
         "hashes": [
@@ -756,6 +756,46 @@
                 "name": "Rumble_OverTime_Time",
                 "alias": null,
                 "hash": "0xf55f3bde"
+            }
+        ]
+    },
+    "level_list.bcsv": {
+        "documentedColumns": "0/4",
+        "description": "List of all levels and scripts required to load them. Contains references to levels not in the final version of the game.",
+        "namedColumns": "0/4",
+        "name": "level_list",
+        "hashes": [ 
+            {
+                "notes": null,
+                "knownFunctionality": false,
+                "datatype": "string",
+                "name": null,
+                "alias": "Level_Name",
+                "hash": "0x37386ae0"
+            },
+            {
+                "notes": null,
+                "knownFunctionality": false,
+                "datatype": "magic",
+                "name": null,
+                "alias": "Magic",
+                "hash": "0x5127f14d"
+            },
+            {
+                "notes": null,
+                "knownFunctionality": false,
+                "datatype": "float",
+                "name": null,
+                "alias": "Column 3",
+                "hash": "0x80f3726c"
+            },
+            {
+                "notes": null,
+                "knownFunctionality": false,
+                "datatype": "string",
+                "name": null,
+                "alias": "SGPR",
+                "hash": "0xdce3a09b"
             }
         ]
     }

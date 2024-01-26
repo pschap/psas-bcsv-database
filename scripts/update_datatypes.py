@@ -36,9 +36,9 @@ def parse_attribute_datatype(dt):
     elif dt == 2:
         return 'int'
     elif dt == 3:
-        return 'short'
+        return 'string'
     elif dt == 4:
-        # TODO
+        return 'magic'
         return None
 
     return None

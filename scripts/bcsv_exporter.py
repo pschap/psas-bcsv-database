@@ -56,10 +56,16 @@ def parse_val(val_bytes, dt):
     :return: parsed value
     """
 
-    if dt == 'int' or dt == 'short':
+    if dt == 'int':
         return int.from_bytes(val_bytes, byteorder='little')
     elif dt == 'float':
         return round_total_digits(struct.unpack('<f', val_bytes)[0])
+    elif dt == 'string':
+        # This is just an offset determining where the string is in the file
+        return int.from_bytes(val_bytes, byteorder='little')
+    elif dt == 'magic':
+        # Just return hex representation
+        return val_bytes.hex()
 
     return None
 
@@ -110,6 +116,19 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia):
                 f.seek(offset + 4*j)
                 val_bytes = f.read(4)
                 val = parse_val(val_bytes, dt)
+
+                # If datatype has string, have more parsing that we need to do
+                if dt == 'string':
+                    str_offset = offset + 4*j + val
+                    f.seek(str_offset)
+                    byte = f.read(1)
+                    str_bytes = []
+                    while byte != b'' and byte != b'\x00':
+                        c = int.from_bytes(byte, byteorder='little')
+                        str_bytes.append(chr(c))
+                        byte = f.read(1)
+
+                    val = ''.join(str_bytes)
 
                 entries[j][i] = val
 

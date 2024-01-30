@@ -66,12 +66,15 @@ def val_to_bytes(val, dt):
     :return: little endian value byte string
     """
 
-    if dt == 'int' or dt == 'short':
+    if dt == 'int':
         val = int(val)
         return val.to_bytes(4, byteorder='little')
     elif dt == 'float':
         val = float(val)
         return struct.pack('<f', val)
+    elif dt == 'magic':
+        val = int(val, 16)
+        return val.to_bytes(4, byteorder='little')
 
     return b'\xff\xff\xff\xff'
 
@@ -88,6 +91,10 @@ def enumerate_datatype(dt):
         return 1
     if dt == 'int':
         return 2
+    if dt == 'string':
+        return 3
+    if dt == 'magic':
+        return 4
     
     return -1
 
@@ -128,12 +135,11 @@ def import_csv_to_bcsv(bcsv, csv_file, encyclopedia):
         else:
             idx = header.index(attr['alias'])
             
-        attr_vals = []
+        info['values'] = []
         for row in rows:
-            attr_vals.append(row[idx])
+            info['values'].append(row[idx])
 
-            info['values'] = attr_vals
-            column_info.append(info)
+        column_info.append(info)
 
     # Write the BCSV file
     with open(bcsv, 'wb') as f:
@@ -141,10 +147,17 @@ def import_csv_to_bcsv(bcsv, csv_file, encyclopedia):
         magic = MAGIC.to_bytes(4, byteorder='little')
         f.write(magic)
 
+        # Calculate the total BCSV size (excluding string data)
+        size = 4 + 2 + 2 + len(hashes)*8 + len(rows)*4*len(hashes)
+        written_bytes = 0
+        offset = size
+        strings = []
+
         columns = len(header).to_bytes(2, byteorder='little')
         rows = len(rows).to_bytes(2, byteorder='little')
         f.write(columns)
         f.write(rows)
+        written_bytes += 8
 
         # Write all hashes
         for attr in hashes:
@@ -155,12 +168,26 @@ def import_csv_to_bcsv(bcsv, csv_file, encyclopedia):
             dt_bytes = dt.to_bytes(4, byteorder='little')
             f.write(hash_bytes)
             f.write(dt_bytes)
+            written_bytes += 8
 
         # Write attribute values
         for attr in column_info:
             for val in attr['values']:
-                val_bytes = val_to_bytes(val, attr['datatype'])
-                f.write(val_bytes)
+                if attr['datatype'] != 'string':
+                    val_bytes = val_to_bytes(val, attr['datatype'])
+                    f.write(val_bytes)
+                    written_bytes += 4
+                else:
+                    str_offset = offset - written_bytes
+                    str_offset = str_offset.to_bytes(4, byteorder='little')
+                    f.write(str_offset)
+                    strings.append(val.encode() + b'\x00')
+                    offset += len(val) + 1
+                    written_bytes += 4
+
+        # Write strings
+        for s in strings:
+            f.write(s)
 
 # ============================================
 #                     MAIN

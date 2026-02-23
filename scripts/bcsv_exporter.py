@@ -95,7 +95,8 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
         try:
             hashes = encyclopedia[basename]['hashes']
         except KeyError:
-            print(f"WARN: No encyclopedia entry for {basename}, exporting as-is")
+            if basename != 'global.bcsv':
+                print(f"WARN: No encyclopedia entry for {basename}, exporting as-is")
             hashes = {}
         offsets = {}
         datatypes = {}
@@ -152,6 +153,21 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
                         val = str_bytes.decode('latin-1')
 
                 entries[j][i] = val
+
+        if basename == 'global.bcsv':
+            # global.bcsv hash values are all Localization Keys. Let's map them to a new column using known values in the encyclopedia
+            header.insert(0, 'Localization Key')
+            # And let's define properly the column names
+            header[1] = 'Key Hash'
+            header[2] = 'Localization Value'
+            for i in range(rows):
+                for hashKeys in entries[i]:
+                    if hashKeys in encyclopedia['localizationKeys']:
+                        entries[i].insert(0, encyclopedia['localizationKeys'][hashKeys])
+                        break
+                    else:
+                        entries[i].insert(0, '')
+                        break
 
     # Write the CSV
     with open(csv_file, 'w', encoding='utf-8', newline='') as f:

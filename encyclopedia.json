@@ -1,802 +1,808 @@
 {
-    "characterattributes.bcsv": {
-        "documentedColumns": "11/39",
-        "description": "Character specific attributes.",
-        "namedColumns": "38/39",
-        "name": "characterattributes",
-        "hashes": [
-            {
-                "notes": "Character movement acceleration.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "Acceleration",
-                "alias": null,
-                "hash": "0x78fba3bd"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "AI_AttackCooldownMinus1",
-                "alias": null,
-                "hash": "0xcdf7b70a"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "AI_AttackCooldown0",
-                "alias": null,
-                "hash": "0x2a38f53f"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "AI_AttackCooldown1",
-                "alias": null,
-                "hash": "0x2938f3ac"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "AI_AttackCooldown2",
-                "alias": null,
-                "hash": "0x2c38f865"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "AI_AttackCooldown3",
-                "alias": null,
-                "hash": "0x2b38f6d2"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "AI_AttackTimerMaxMinus1",
-                "alias": null,
-                "hash": "0xd7c10ade"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "AI_AttackTimerMax0",
-                "alias": null,
-                "hash": "0x9c44b163"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "AI_AttackTimerMax1",
-                "alias": null,
-                "hash": "0x9b44afd0"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "AI_AttackTimerMax2",
-                "alias": null,
-                "hash": "0x9e44b489"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "AI_AttackTimerMax3",
-                "alias": null,
-                "hash": "0x9d44b2f6"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "AI_CanAbsorb",
-                "alias": null,
-                "hash": "0xb9473b9b"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "AI_CanBlock",
-                "alias": null,
-                "hash": "0xba416937"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "AI_CanCounter",
-                "alias": null,
-                "hash": "0x279a6312"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "AI_CanFloat",
-                "alias": null,
-                "hash": "0x6652c9d0"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "AI_CanReflect",
-                "alias": null,
-                "hash": "0x1dab3207"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "AI_IgnorePvPCollision",
-                "alias": null,
-                "hash": "0xac324718"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "AI_IgnoreWorldCollision",
-                "alias": null,
-                "hash": "0xdab2e58e"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "AI_NotTargetable",
-                "alias": null,
-                "hash": "0x4bd928fc"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "AI_Super1Startup",
-                "alias": null,
-                "hash": "0x206d3d83"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "AI_Super2Startup",
-                "alias": null,
-                "hash": "0x306a3b4c"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "AI_Super3Startup",
-                "alias": null,
-                "hash": "0x74678a09"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "AI_UseSteering",
-                "alias": null,
-                "hash": "0xd709e740"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "AI_UseTargetList",
-                "alias": null,
-                "hash": "0xde3a5952"
-            },
-            {
-                "notes": "Amount of AP needed in order to obtain a Level 1 Super.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "AP_Level1",
-                "alias": null,
-                "hash": "0x6e18d538"
-            },
-            {
-                "notes": "Amount of AP needed in order to obtain a Level 2 Super.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "AP_Level2",
-                "alias": null,
-                "hash": "0x7118d9f1"
-            },
-            {
-                "notes": "Maximum obtainable AP (amount of AP needed in order to obtain a Level 3 Super).",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "AP_Max",
-                "alias": null,
-                "hash": "0xe310d335"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "AP_OnDeathSpawned",
-                "alias": null,
-                "hash": "0x15d2b364"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "AP_StartingLevel",
-                "alias": null,
-                "hash": "0xd4edb98d"
-            },
-            {
-                "notes": "Maximum character fall speed.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "FallSpeed_Max",
-                "alias": null,
-                "hash": "0x64bfdb5a"
-            },
-            {
-                "notes": "Observed friction per character when moving on a surface.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "Friction",
-                "alias": null,
-                "hash": "0xf4e533db"
-            },
-            {
-                "notes": "Observed gravity per character while falling.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "Gravity",
-                "alias": null,
-                "hash": "0x52d43e5"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Health",
-                "alias": null,
-                "hash": "0x986145af"
-            },
-            {
-                "notes": "Height of '1P', '2P', etc. icons above players",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "Height",
-                "alias": null,
-                "hash": "0x1bd13562"
-            },
-            {
-                "notes": "Jump speed per character.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "JumpVelocity",
-                "alias": null,
-                "hash": "0x8482641a"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Mass",
-                "alias": null,
-                "hash": "0x465862f1"
-            },
-            {
-                "notes": "Minimum movement speed per character.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "Speed_Min",
-                "alias": null,
-                "hash": "0x2f5b6b1f"
-            },
-            {
-                "notes": "Maximum movement speed per character.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "Speed_Max",
-                "alias": null,
-                "hash": "0x3d47f971"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "magic",
-                "name": null,
-                "alias": "Magic",
-                "hash": "0xfc8adc13"
-            }
-        ]
-    },
-    "attackprioritiesattributes.bcsv": {
-        "documentedColumns": "0/11",
-        "description": "Defines which types of attacks have priorities over others.",
-        "namedColumns": "10/11",
-        "name": "attackprioritiesattributes",
-        "hashes": [
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "Attacks",
-                "alias": null,
-                "hash": "0x495bf62a"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "Throws",
-                "alias": null,
-                "hash": "0x6db5ccf4"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "Items",
-                "alias": null,
-                "hash": "0xe036382f"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "EpicItems",
-                "alias": null,
-                "hash": "0x2ba2da6c"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "Hazards",
-                "alias": null,
-                "hash": "0xdc1985da"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "DeathHazards",
-                "alias": null,
-                "hash": "0x2f256a92"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "Mashups",
-                "alias": null,
-                "hash": "0xdcddf9ea"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "Level1",
-                "alias": null,
-                "hash": "0x255b92a4"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "Level2",
-                "alias": null,
-                "hash": "0x285b975d"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "Level3",
-                "alias": null,
-                "hash": "0x275b95ca"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "magic",
-                "name": null,
-                "alias": "Magic",
-                "hash": "0xfcbb60f3"
-            }
-        ]
-    },
-    "gameattributes.bcsv": {
-        "documentedColumns": "6/42",
-        "description": "One row file containing global game data.",
-        "namedColumns": "42/42",
-        "name": "gameattributes",
-        "hashes": [
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Aura_Multiplier",
-                "alias": null,
-                "hash": "0x4d0df068"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Aura_SizeMax",
-                "alias": null,
-                "hash": "0x46496af4"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Aura_SizeMin",
-                "alias": null,
-                "hash": "0x3435c6e6"
-            },
-            {
-                "notes": "AP Amount given by all light (normally 10 AP) moves.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "AP_Amount_Light",
-                "alias": null,
-                "hash": "0xbb0c224a"
-            },
-            {
-                "notes": "AP Amount given by all normal (normally 20 AP) moves.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "AP_Amount_Medium",
-                "alias": null,
-                "hash": "0xf1b3634d"
-            },
-            {
-                "notes": "AP Amount given by all heavy (normally 30 AP) moves.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "AP_Amount_Heavy",
-                "alias": null,
-                "hash": "0xf5ff870d"
-            },
-            {
-                "notes": "Block push dealt by all weak moves.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "BlockPush_Weak",
-                "alias": null,
-                "hash": "0xb3863133"
-            },
-            {
-                "notes": "Block push dealt by all normal moves.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "BlockPush_Normal",
-                "alias": null,
-                "hash": "0x57c83b70"
-            },
-            {
-                "notes": "Block push dealt by all strong moves.",
-                "knownFunctionality": true,
-                "datatype": "float",
-                "name": "BlockPush_Strong",
-                "alias": null,
-                "hash": "0x58908810"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Health_Weak",
-                "alias": null,
-                "hash": "0x96c332a8"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Health_Normal",
-                "alias": null,
-                "hash": "0xa9da28d3"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Health_Strong",
-                "alias": null,
-                "hash": "0xf4a605c7"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "KillStreak_KillCount",
-                "alias": null,
-                "hash": "0x100c8447"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "int",
-                "name": "MultiKill_KillCount",
-                "alias": null,
-                "hash": "0x97fc0d0a"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "MultiKill_Timer",
-                "alias": null,
-                "hash": "0xd4a4bba0"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "RoundSequence_CharacterIntroTime",
-                "alias": null,
-                "hash": "0xbdd2e3d9"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "RoundSequence_CharacterReadyTime",
-                "alias": null,
-                "hash": "0x8be75424"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "RoundSequence_CharacterScoreTime",
-                "alias": null,
-                "hash": "0xca7ed515"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "RoundSequence_TimesUpDuration",
-                "alias": null,
-                "hash": "0x1d15162e"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "RoundSequence_OvertimeDuration",
-                "alias": null,
-                "hash": "0x8a10378c"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "RoundSequence_RoundOverFirstWarningTime",
-                "alias": null,
-                "hash": "0xa13802d4"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "RoundSequence_RoundOverLastWarningTime",
-                "alias": null,
-                "hash": "0xaa2710f8"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "RoundSequence_RoundReadyTime",
-                "alias": null,
-                "hash": "0xf17676ed"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "RoundSequence_RoundStartTime",
-                "alias": null,
-                "hash": "0x87375ad6"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "RoundSequence_RoundStartNoInputTime",
-                "alias": null,
-                "hash": "0xabd97b19"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "RoundSequence_RoundEndTimeScale",
-                "alias": null,
-                "hash": "0xb360fe7b"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_Light_Intensity",
-                "alias": null,
-                "hash": "0x8ab663bd"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_Light_Time",
-                "alias": null,
-                "hash": "0x53b74c4d"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_Medium_Intensity",
-                "alias": null,
-                "hash": "0x10228c8c"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_Medium_Time",
-                "alias": null,
-                "hash": "0x1176c99e"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_Heavy_Intensity",
-                "alias": null,
-                "hash": "0x15f0ff6"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_Heavy_Time",
-                "alias": null,
-                "hash": "0xc3cc8e78"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_Twitch_Intensity",
-                "alias": null,
-                "hash": "0x311c32b0"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_Twitch_Time",
-                "alias": null,
-                "hash": "0x9f1dfa6a"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_SuperKill_Intensity",
-                "alias": null,
-                "hash": "0x3f2cd62a"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_SuperKill_Time",
-                "alias": null,
-                "hash": "0x859c4d84"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_Shock_Intensity",
-                "alias": null,
-                "hash": "0xde748627"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_Shock_Time",
-                "alias": null,
-                "hash": "0xf4506f0f"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_Win_Intensity",
-                "alias": null,
-                "hash": "0xb2b8eb97"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_Win_Time",
-                "alias": null,
-                "hash": "0x23147e3f"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_OverTime_Intensity",
-                "alias": null,
-                "hash": "0x2ec7ecc"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": "Rumble_OverTime_Time",
-                "alias": null,
-                "hash": "0xf55f3bde"
-            }
-        ]
-    },
-    "level_list.bcsv": {
-        "documentedColumns": "0/4",
-        "description": "List of all levels and scripts required to load them. Contains references to levels not in the final version of the game.",
-        "namedColumns": "0/4",
-        "name": "level_list",
-        "hashes": [ 
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "string",
-                "name": null,
-                "alias": "Level_Name",
-                "hash": "0x37386ae0"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "magic",
-                "name": null,
-                "alias": "Magic",
-                "hash": "0x5127f14d"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "float",
-                "name": null,
-                "alias": "Column 3",
-                "hash": "0x80f3726c"
-            },
-            {
-                "notes": null,
-                "knownFunctionality": false,
-                "datatype": "string",
-                "name": null,
-                "alias": "SGPR",
-                "hash": "0xdce3a09b"
-            }
-        ]
-    }
+  "characterattributes.bcsv": {
+    "documentedColumns": "11/39",
+    "description": "Character specific attributes.",
+    "namedColumns": "38/39",
+    "name": "characterattributes",
+    "hashes": [
+      {
+        "notes": "Character movement acceleration.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "Acceleration",
+        "alias": null,
+        "hash": "0x78fba3bd"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "AI_AttackCooldownMinus1",
+        "alias": null,
+        "hash": "0xcdf7b70a"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "AI_AttackCooldown0",
+        "alias": null,
+        "hash": "0x2a38f53f"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "AI_AttackCooldown1",
+        "alias": null,
+        "hash": "0x2938f3ac"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "AI_AttackCooldown2",
+        "alias": null,
+        "hash": "0x2c38f865"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "AI_AttackCooldown3",
+        "alias": null,
+        "hash": "0x2b38f6d2"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "AI_AttackTimerMaxMinus1",
+        "alias": null,
+        "hash": "0xd7c10ade"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "AI_AttackTimerMax0",
+        "alias": null,
+        "hash": "0x9c44b163"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "AI_AttackTimerMax1",
+        "alias": null,
+        "hash": "0x9b44afd0"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "AI_AttackTimerMax2",
+        "alias": null,
+        "hash": "0x9e44b489"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "AI_AttackTimerMax3",
+        "alias": null,
+        "hash": "0x9d44b2f6"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "AI_CanAbsorb",
+        "alias": null,
+        "hash": "0xb9473b9b"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "AI_CanBlock",
+        "alias": null,
+        "hash": "0xba416937"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "AI_CanCounter",
+        "alias": null,
+        "hash": "0x279a6312"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "AI_CanFloat",
+        "alias": null,
+        "hash": "0x6652c9d0"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "AI_CanReflect",
+        "alias": null,
+        "hash": "0x1dab3207"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "AI_IgnorePvPCollision",
+        "alias": null,
+        "hash": "0xac324718"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "AI_IgnoreWorldCollision",
+        "alias": null,
+        "hash": "0xdab2e58e"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "AI_NotTargetable",
+        "alias": null,
+        "hash": "0x4bd928fc"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "AI_Super1Startup",
+        "alias": null,
+        "hash": "0x206d3d83"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "AI_Super2Startup",
+        "alias": null,
+        "hash": "0x306a3b4c"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "AI_Super3Startup",
+        "alias": null,
+        "hash": "0x74678a09"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "AI_UseSteering",
+        "alias": null,
+        "hash": "0xd709e740"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "AI_UseTargetList",
+        "alias": null,
+        "hash": "0xde3a5952"
+      },
+      {
+        "notes": "Amount of AP needed in order to obtain a Level 1 Super.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "AP_Level1",
+        "alias": null,
+        "hash": "0x6e18d538"
+      },
+      {
+        "notes": "Amount of AP needed in order to obtain a Level 2 Super.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "AP_Level2",
+        "alias": null,
+        "hash": "0x7118d9f1"
+      },
+      {
+        "notes": "Maximum obtainable AP (amount of AP needed in order to obtain a Level 3 Super).",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "AP_Max",
+        "alias": null,
+        "hash": "0xe310d335"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "AP_OnDeathSpawned",
+        "alias": null,
+        "hash": "0x15d2b364"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "AP_StartingLevel",
+        "alias": null,
+        "hash": "0xd4edb98d"
+      },
+      {
+        "notes": "Maximum character fall speed.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "FallSpeed_Max",
+        "alias": null,
+        "hash": "0x64bfdb5a"
+      },
+      {
+        "notes": "Observed friction per character when moving on a surface.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "Friction",
+        "alias": null,
+        "hash": "0xf4e533db"
+      },
+      {
+        "notes": "Observed gravity per character while falling.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "Gravity",
+        "alias": null,
+        "hash": "0x52d43e5"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Health",
+        "alias": null,
+        "hash": "0x986145af"
+      },
+      {
+        "notes": "Height of '1P', '2P', etc. icons above players",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "Height",
+        "alias": null,
+        "hash": "0x1bd13562"
+      },
+      {
+        "notes": "Jump speed per character.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "JumpVelocity",
+        "alias": null,
+        "hash": "0x8482641a"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Mass",
+        "alias": null,
+        "hash": "0x465862f1"
+      },
+      {
+        "notes": "Minimum movement speed per character.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "Speed_Min",
+        "alias": null,
+        "hash": "0x2f5b6b1f"
+      },
+      {
+        "notes": "Maximum movement speed per character.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "Speed_Max",
+        "alias": null,
+        "hash": "0x3d47f971"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "magic",
+        "name": null,
+        "alias": "Magic",
+        "hash": "0xfc8adc13"
+      }
+    ]
+  },
+  "attackprioritiesattributes.bcsv": {
+    "documentedColumns": "0/11",
+    "description": "Defines which types of attacks have priorities over others.",
+    "namedColumns": "10/11",
+    "name": "attackprioritiesattributes",
+    "hashes": [
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "Attacks",
+        "alias": null,
+        "hash": "0x495bf62a"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "Throws",
+        "alias": null,
+        "hash": "0x6db5ccf4"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "Items",
+        "alias": null,
+        "hash": "0xe036382f"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "EpicItems",
+        "alias": null,
+        "hash": "0x2ba2da6c"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "Hazards",
+        "alias": null,
+        "hash": "0xdc1985da"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "DeathHazards",
+        "alias": null,
+        "hash": "0x2f256a92"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "Mashups",
+        "alias": null,
+        "hash": "0xdcddf9ea"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "Level1",
+        "alias": null,
+        "hash": "0x255b92a4"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "Level2",
+        "alias": null,
+        "hash": "0x285b975d"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "Level3",
+        "alias": null,
+        "hash": "0x275b95ca"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "magic",
+        "name": null,
+        "alias": "Magic",
+        "hash": "0xfcbb60f3"
+      }
+    ]
+  },
+  "gameattributes.bcsv": {
+    "documentedColumns": "6/42",
+    "description": "One row file containing global game data.",
+    "namedColumns": "42/42",
+    "name": "gameattributes",
+    "hashes": [
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Aura_Multiplier",
+        "alias": null,
+        "hash": "0x4d0df068"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Aura_SizeMax",
+        "alias": null,
+        "hash": "0x46496af4"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Aura_SizeMin",
+        "alias": null,
+        "hash": "0x3435c6e6"
+      },
+      {
+        "notes": "AP Amount given by all light (normally 10 AP) moves.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "AP_Amount_Light",
+        "alias": null,
+        "hash": "0xbb0c224a"
+      },
+      {
+        "notes": "AP Amount given by all normal (normally 20 AP) moves.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "AP_Amount_Medium",
+        "alias": null,
+        "hash": "0xf1b3634d"
+      },
+      {
+        "notes": "AP Amount given by all heavy (normally 30 AP) moves.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "AP_Amount_Heavy",
+        "alias": null,
+        "hash": "0xf5ff870d"
+      },
+      {
+        "notes": "Block push dealt by all weak moves.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "BlockPush_Weak",
+        "alias": null,
+        "hash": "0xb3863133"
+      },
+      {
+        "notes": "Block push dealt by all normal moves.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "BlockPush_Normal",
+        "alias": null,
+        "hash": "0x57c83b70"
+      },
+      {
+        "notes": "Block push dealt by all strong moves.",
+        "knownFunctionality": true,
+        "datatype": "float",
+        "name": "BlockPush_Strong",
+        "alias": null,
+        "hash": "0x58908810"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Health_Weak",
+        "alias": null,
+        "hash": "0x96c332a8"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Health_Normal",
+        "alias": null,
+        "hash": "0xa9da28d3"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Health_Strong",
+        "alias": null,
+        "hash": "0xf4a605c7"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "KillStreak_KillCount",
+        "alias": null,
+        "hash": "0x100c8447"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "int",
+        "name": "MultiKill_KillCount",
+        "alias": null,
+        "hash": "0x97fc0d0a"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "MultiKill_Timer",
+        "alias": null,
+        "hash": "0xd4a4bba0"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "RoundSequence_CharacterIntroTime",
+        "alias": null,
+        "hash": "0xbdd2e3d9"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "RoundSequence_CharacterReadyTime",
+        "alias": null,
+        "hash": "0x8be75424"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "RoundSequence_CharacterScoreTime",
+        "alias": null,
+        "hash": "0xca7ed515"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "RoundSequence_TimesUpDuration",
+        "alias": null,
+        "hash": "0x1d15162e"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "RoundSequence_OvertimeDuration",
+        "alias": null,
+        "hash": "0x8a10378c"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "RoundSequence_RoundOverFirstWarningTime",
+        "alias": null,
+        "hash": "0xa13802d4"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "RoundSequence_RoundOverLastWarningTime",
+        "alias": null,
+        "hash": "0xaa2710f8"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "RoundSequence_RoundReadyTime",
+        "alias": null,
+        "hash": "0xf17676ed"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "RoundSequence_RoundStartTime",
+        "alias": null,
+        "hash": "0x87375ad6"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "RoundSequence_RoundStartNoInputTime",
+        "alias": null,
+        "hash": "0xabd97b19"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "RoundSequence_RoundEndTimeScale",
+        "alias": null,
+        "hash": "0xb360fe7b"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_Light_Intensity",
+        "alias": null,
+        "hash": "0x8ab663bd"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_Light_Time",
+        "alias": null,
+        "hash": "0x53b74c4d"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_Medium_Intensity",
+        "alias": null,
+        "hash": "0x10228c8c"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_Medium_Time",
+        "alias": null,
+        "hash": "0x1176c99e"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_Heavy_Intensity",
+        "alias": null,
+        "hash": "0x15f0ff6"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_Heavy_Time",
+        "alias": null,
+        "hash": "0xc3cc8e78"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_Twitch_Intensity",
+        "alias": null,
+        "hash": "0x311c32b0"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_Twitch_Time",
+        "alias": null,
+        "hash": "0x9f1dfa6a"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_SuperKill_Intensity",
+        "alias": null,
+        "hash": "0x3f2cd62a"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_SuperKill_Time",
+        "alias": null,
+        "hash": "0x859c4d84"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_Shock_Intensity",
+        "alias": null,
+        "hash": "0xde748627"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_Shock_Time",
+        "alias": null,
+        "hash": "0xf4506f0f"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_Win_Intensity",
+        "alias": null,
+        "hash": "0xb2b8eb97"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_Win_Time",
+        "alias": null,
+        "hash": "0x23147e3f"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_OverTime_Intensity",
+        "alias": null,
+        "hash": "0x2ec7ecc"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": "Rumble_OverTime_Time",
+        "alias": null,
+        "hash": "0xf55f3bde"
+      }
+    ]
+  },
+  "level_list.bcsv": {
+    "documentedColumns": "0/4",
+    "description": "List of all levels and scripts required to load them. Contains references to levels not in the final version of the game.",
+    "namedColumns": "0/4",
+    "name": "level_list",
+    "hashes": [
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "string",
+        "name": null,
+        "alias": "Level_Name",
+        "hash": "0x37386ae0"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "magic",
+        "name": null,
+        "alias": "Magic",
+        "hash": "0x5127f14d"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "float",
+        "name": null,
+        "alias": "Column 3",
+        "hash": "0x80f3726c"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": false,
+        "datatype": "string",
+        "name": null,
+        "alias": "SGPR",
+        "hash": "0xdce3a09b"
+      }
+    ]
+  },
+
+  "localizationKeys": {
+    "75c97ccd": "MainMenu_StageName",
+    "e4579423": "MainMenu_Online",
+    "624a8a9a": "SoloPlay_INFOBOX_HEADER"
+  }
 }

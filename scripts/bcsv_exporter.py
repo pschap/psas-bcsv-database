@@ -92,7 +92,11 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
 
         # For each hash/column, resolve its offset
         basename = os.path.basename(bcsv)
-        hashes = encyclopedia[basename]['hashes']
+        try:
+            hashes = encyclopedia[basename]['hashes']
+        except KeyError:
+            print(f"WARN: No encyclopedia entry for {basename}, exporting as-is")
+            hashes = {}
         offsets = {}
         datatypes = {}
 
@@ -108,6 +112,19 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
                     header[i] = name 
                     datatypes[i] = attr['datatype']
                     break
+            # If it's not documented just export it as-is
+            if header[i] == '':
+                header[i] = attr_hash
+                attr_datatype = hex(int.from_bytes(f.read(4), byteorder=endianness))
+                if attr_datatype == '0x1':
+                    datatypes[i] = 'int'
+                elif attr_datatype == '0x2':
+                    datatypes[i] = 'float'
+                elif attr_datatype == '0x3':
+                    datatypes[i] = 'string'
+                # This means this column contains rows of FNV1a hashes
+                elif attr_datatype == '0x4':
+                    datatypes[i] = 'magic'
 
         # Read rows
         for i in range(columns):

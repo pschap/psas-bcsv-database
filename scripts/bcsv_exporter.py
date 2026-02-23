@@ -140,18 +140,21 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
                     str_offset = offset + 4*j + val
                     f.seek(str_offset)
                     byte = f.read(1)
-                    str_bytes = []
+                    # Use UTF-8 decoding
+                    str_bytes = bytearray()
                     while byte != b'' and byte != b'\x00':
-                        c = int.from_bytes(byte, byteorder=endianness)
-                        str_bytes.append(chr(c))
+                        str_bytes.extend(byte)
                         byte = f.read(1)
 
-                    val = ''.join(str_bytes)
+                    try:
+                        val = str_bytes.decode('utf-8')
+                    except UnicodeDecodeError:
+                        val = str_bytes.decode('latin-1')
 
                 entries[j][i] = val
 
     # Write the CSV
-    with open(csv_file, 'w') as f:
+    with open(csv_file, 'w', encoding='utf-8', newline='') as f:
         csvwriter = csv.writer(f)
         csvwriter.writerow(header)
         csvwriter.writerows(entries)

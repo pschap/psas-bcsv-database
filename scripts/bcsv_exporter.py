@@ -22,7 +22,6 @@ def parse_args():
     parser.add_argument('-e', '--encyclopedia', type=str, default='encyclopedia.json', help='bcsv encyclopedia')
     parser.add_argument('-b', '--bcsv', type=str, required=True, help='bcsv file to export')
     parser.add_argument('-o', '--output', type=str, required=False, default='exports', help='path to write exported files')
-    parser.add_argument('-n', '--endianness', type=str, required=False, default='big', choices=['little', 'big'], help='big for PS3, little for PSVita')
 
     args = parser.parse_args()
     return args
@@ -47,6 +46,20 @@ def round_total_digits(x, digits=7):
 
     return round(x, digits - magnitude(x))
 
+def detect_endianness(bcsv):
+    with open(bcsv, 'rb') as f:
+        magic = f.read(4)
+
+    if magic == b'BCVS':
+        return 'big'
+    if magic == b'SVCB':
+        return 'little'
+
+    raise ValueError(
+        f"Unsupported BCSV magic {magic!r} in {bcsv}. "
+        "Expected b'BCVS' (big) or b'SVCB' (little)."
+    )
+
 def parse_val(val_bytes, dt, endianness):
     """
     Parses bytes corresponding to a attribute value for a 
@@ -60,7 +73,8 @@ def parse_val(val_bytes, dt, endianness):
     if dt == 'int':
         return int.from_bytes(val_bytes, byteorder=endianness)
     elif dt == 'float':
-        return round_total_digits(struct.unpack('<f', val_bytes)[0])
+        fmt = '>f' if endianness == 'big' else '<f'
+        return round_total_digits(struct.unpack(fmt, val_bytes)[0])
     elif dt == 'string':
         # This is just an offset determining where the string is in the file
         return int.from_bytes(val_bytes, byteorder=endianness)
@@ -100,6 +114,7 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
             hashes = {}
         offsets = {}
         datatypes = {}
+        locValues = encyclopedia['localizationValues_BE'] if endianness == 'big' else encyclopedia['localizationValues_LE']
 
         for i in range(columns):
             f.seek(8*i + 8)
@@ -115,7 +130,11 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
                     break
             # If it's not documented just export it as-is
             if header[i] == '':
-                header[i] = attr_hash
+                # First let's try to see if a header is mapped to a localization
+                if attr_hash in locValues:
+                    header[i] = locValues[attr_hash]
+                else:
+                    header[i] = attr_hash
                 attr_datatype = hex(int.from_bytes(f.read(4), byteorder=endianness))
                 if attr_datatype == '0x1':
                     datatypes[i] = 'int'
@@ -126,6 +145,11 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
                 # This means this column contains rows of FNV1a hashes
                 elif attr_datatype == '0x4':
                     datatypes[i] = 'magic'
+                else:
+                    raise ValueError(
+                        f"Unsupported datatype code {attr_datatype} for column {i}. "
+                        f"Try switching --endianness (current: {endianness})."
+                    )
 
         # Read rows
         for i in range(columns):
@@ -151,6 +175,11 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
                         val = str_bytes.decode('utf-8')
                     except UnicodeDecodeError:
                         val = str_bytes.decode('latin-1')
+                
+                if dt == 'magic':
+                    # For FNV1a hashes let's try to look them up in any localization string
+                    if val in locValues:
+                        val = " (0x" + val + ")" + locValues[val]
 
                 entries[j][i] = val
 
@@ -184,7 +213,6 @@ def main():
     bcsv = args.bcsv
     encyclopedia_file = args.encyclopedia
     output = args.output
-    endianness = args.endianness
 
     # Check validity of provided BCSV file
     if not os.path.exists(bcsv) or not os.path.isfile(bcsv):
@@ -192,6 +220,12 @@ def main():
         return
     elif os.path.splitext(bcsv)[1] != '.bcsv':
         print("ERROR: Provided path is not a BCSV file. Exiting...")
+        return
+
+    try:
+        endianness = detect_endianness(bcsv)
+    except ValueError as e:
+        print(f"ERROR: {e}")
         return
 
     # Check validity of provided encyclopedia
@@ -203,7 +237,7 @@ def main():
         return
 
     # Open encyclopedia
-    with open(encyclopedia_file) as f:
+    with open(encyclopedia_file, encoding='utf-8') as f:
         encyclopedia = json.load(f)
 
     # Create output directory if it does not exist

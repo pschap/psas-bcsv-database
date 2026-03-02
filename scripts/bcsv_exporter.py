@@ -150,6 +150,7 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
                         f"Unsupported datatype code {attr_datatype} for column {i}. "
                         f"Try switching --endianness (current: {endianness})."
                     )
+                header[i] = f"{header[i]} ({datatypes[i]})"
 
         # Read rows
         for i in range(columns):

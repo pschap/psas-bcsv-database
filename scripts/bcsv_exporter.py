@@ -137,9 +137,9 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
                     header[i] = attr_hash
                 attr_datatype = hex(int.from_bytes(f.read(4), byteorder=endianness))
                 if attr_datatype == '0x1':
-                    datatypes[i] = 'int'
-                elif attr_datatype == '0x2':
                     datatypes[i] = 'float'
+                elif attr_datatype == '0x2':
+                    datatypes[i] = 'int'
                 elif attr_datatype == '0x3':
                     datatypes[i] = 'string'
                 # This means this column contains rows of FNV1a hashes

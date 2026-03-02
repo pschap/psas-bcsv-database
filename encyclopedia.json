@@ -799,6 +799,30 @@
       }
     ]
   },
+  "character_readycolors.bcsv": {
+    "documentedColumns": "2/2",
+    "description": "The color of the waves when a character is set as ready.",
+    "namedColumns": "2/2",
+    "name": "character_readycolors",
+    "hashes": [
+      {
+        "notes": null,
+        "knownFunctionality": true,
+        "datatype": "magic",
+        "name": "Character Name",
+        "alias": null,
+        "hash": "0x5ab48fa9"
+      },
+      {
+        "notes": null,
+        "knownFunctionality": true,
+        "datatype": "int",
+        "name": "RGBA Color",
+        "alias": null,
+        "hash": "0xdaa7875b"
+      }
+    ]
+  },
 
   "localizationKeys": {
     "75c97ccd": "MainMenu_StageName",

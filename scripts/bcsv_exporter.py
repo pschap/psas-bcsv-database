@@ -180,7 +180,7 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
                 if dt == 'magic':
                     # For FNV1a hashes let's try to look them up in any localization string
                     if val in locValues:
-                        val = " (0x" + val + ")" + locValues[val]
+                        val = "(" + val + ")" + locValues[val]
 
                 entries[j][i] = val
 

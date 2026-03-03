@@ -121,18 +121,19 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness, rawOutput=False
             f.seek(8*i + 8)
             attr_hash = hex(int.from_bytes(f.read(4), byteorder=endianness))
             offsets[i] = 8 + i*rows*4 + columns*8
-            for attr in hashes:
-                if attr_hash == attr['hash']:
-                    name = attr['name']
-                    alias = attr['alias']
-                    name = name if name is not None else alias
-                    header[i] = name 
-                    datatypes[i] = attr['datatype']
-                    break
+            if not rawOutput:
+                for attr in hashes:
+                    if attr_hash == attr['hash']:
+                        name = attr['name']
+                        alias = attr['alias']
+                        name = name if name is not None else alias
+                        header[i] = name 
+                        datatypes[i] = attr['datatype']
+                        break
             # If it's not documented just export it as-is
             if header[i] == '':
                 # First let's try to see if a header is mapped to a localization
-                if attr_hash in locValues:
+                if attr_hash in locValues and not rawOutput:
                     header[i] = locValues[attr_hash]
                 else:
                     header[i] = attr_hash
@@ -149,10 +150,8 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness, rawOutput=False
                 else:
                     raise ValueError(
                         f"Unsupported datatype code {attr_datatype} for column {i}. "
-                        f"Try switching --endianness (current: {endianness})."
                     )
-                if not rawOutput:
-                    header[i] = f"{header[i]} ({datatypes[i]})"
+                header[i] = f"{header[i]} ({datatypes[i]})"
 
         # Read rows
         for i in range(columns):

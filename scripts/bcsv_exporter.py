@@ -22,6 +22,7 @@ def parse_args():
     parser.add_argument('-e', '--encyclopedia', type=str, default='encyclopedia.json', help='bcsv encyclopedia')
     parser.add_argument('-b', '--bcsv', type=str, required=True, help='bcsv file to export')
     parser.add_argument('-o', '--output', type=str, required=False, default='exports', help='path to write exported files')
+    parser.add_argument('-r', '--rawOutput', action='store_true', required=False, help='whether to export raw values without localization lookups')
 
     args = parser.parse_args()
     return args
@@ -84,7 +85,7 @@ def parse_val(val_bytes, dt, endianness):
 
     return None
 
-def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
+def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness, rawOutput=False):
     """
     Reads a BCSV file and exports it to a CSV file.
 
@@ -150,7 +151,8 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
                         f"Unsupported datatype code {attr_datatype} for column {i}. "
                         f"Try switching --endianness (current: {endianness})."
                     )
-                header[i] = f"{header[i]} ({datatypes[i]})"
+                if not rawOutput:
+                    header[i] = f"{header[i]} ({datatypes[i]})"
 
         # Read rows
         for i in range(columns):
@@ -179,7 +181,7 @@ def export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness):
                 
                 if dt == 'magic':
                     # For FNV1a hashes let's try to look them up in any localization string
-                    if val in locValues:
+                    if val in locValues and not rawOutput:
                         val = "(" + val + ")" + locValues[val]
 
                 entries[j][i] = val
@@ -214,6 +216,7 @@ def main():
     bcsv = args.bcsv
     encyclopedia_file = args.encyclopedia
     output = args.output
+    rawOutput = args.rawOutput
 
     # Check validity of provided BCSV file
     if not os.path.exists(bcsv) or not os.path.isfile(bcsv):
@@ -249,7 +252,7 @@ def main():
     basename = os.path.basename(bcsv)
     filename = os.path.splitext(basename)[0]
     csv_file = os.path.join(output, filename + '.csv')
-    export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness)
+    export_bcsv_to_csv(bcsv, csv_file, encyclopedia, endianness, rawOutput)
 
 if __name__ == '__main__':
     main()

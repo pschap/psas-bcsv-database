@@ -28,6 +28,8 @@ def parse_args():
     parser.add_argument('-e', '--encyclopedia', type=str, default='encyclopedia.json', help='bcsv encyclopedia')
     parser.add_argument('-c', '--csv', type=str, required=True, help='csv file to import')
     parser.add_argument('-o', '--output', type=str, required=False, default='imports', help='path to write imported bcsv file')
+    parser.add_argument('-n', '--endianness', type=str, required=False, default='big', choices=['little', 'big'], help='big for PS3, little for PSVita')
+    parser.add_argument('-r', '--raw', action='store_true', required=False, help='whether to import values from a raw-exported CSV')
 
     args = parser.parse_args()
     return args
@@ -56,7 +58,7 @@ def game_attribute_hash(attribute, key):
 
     return key
 
-def val_to_bytes(val, dt):
+def val_to_bytes(val, dt, endianness):
     """
     Parses an attribute value in a CSV and returns 
     its corresponding little-endian byte representation.
@@ -68,13 +70,14 @@ def val_to_bytes(val, dt):
 
     if dt == 'int':
         val = int(val)
-        return val.to_bytes(4, byteorder='little')
+        return val.to_bytes(4, byteorder=endianness)
     elif dt == 'float':
         val = float(val)
-        return struct.pack('<f', val)
+        fmt = '>f' if endianness == 'big' else '<f'
+        return struct.pack(fmt, val)
     elif dt == 'magic':
         val = int(val, 16)
-        return val.to_bytes(4, byteorder='little')
+        return val.to_bytes(4, byteorder=endianness)
 
     return b'\xff\xff\xff\xff'
 
@@ -98,7 +101,7 @@ def enumerate_datatype(dt):
     
     return -1
 
-def import_csv_to_bcsv(bcsv, csv_file, encyclopedia):
+def import_csv_to_bcsv(bcsv, csv_file, encyclopedia, endianness, raw=False):
     """
     Reads a CSV file and imports it to a BCSV file.
 
@@ -107,7 +110,7 @@ def import_csv_to_bcsv(bcsv, csv_file, encyclopedia):
     :param encyclopedia: BCSV encyclopedia
     """
 
-    with open(csv_file, 'r') as f:
+    with open(csv_file, 'r', encoding='utf-8', newline='') as f:
         reader = csv.reader(f)
         i = 0
 
@@ -122,29 +125,50 @@ def import_csv_to_bcsv(bcsv, csv_file, encyclopedia):
             i += 1
 
     # Store column hashes / datatypes / attributes values
-    basename = os.path.basename(bcsv)
-    hashes = encyclopedia[basename]['hashes']
+    # Parse from encyclopedia
+    hashes = []
     column_info = []
-    for attr in hashes:
-        info = {}
-        info['hash'] = attr['hash']
-        info['datatype'] = attr['datatype']
+    if not raw:
+        basename = os.path.basename(bcsv)
+        hashes = encyclopedia[basename]['hashes']
+        for attr in hashes:
+            info = {}
+            info['hash'] = attr['hash']
+            info['datatype'] = attr['datatype']
 
-        if attr['name'] in header:
-            idx = header.index(attr['name'])
-        else:
-            idx = header.index(attr['alias'])
-            
-        info['values'] = []
-        for row in rows:
-            info['values'].append(row[idx])
+            if attr['name'] in header:
+                idx = header.index(attr['name'])
+            else:
+                idx = header.index(attr['alias'])
+                
+            info['values'] = []
+            for row in rows:
+                info['values'].append(row[idx])
 
-        column_info.append(info)
+            column_info.append(info)
+    else:
+        # If it's a raw exported CSV we need to parse the hashes and datatypes from the header
+        for col in header:
+            hash_str, dt_str = col.split(' ')
+            hash_str = hash_str.strip()
+            dt_str = dt_str.strip('()')
+
+            attr = {}
+            attr['hash'] = hash_str
+            attr['datatype'] = dt_str
+
+            idx = header.index(col)
+            attr['values'] = []
+            for row in rows:
+                attr['values'].append(row[idx])
+
+            hashes.append(attr)
+            column_info.append(attr)
 
     # Write the BCSV file
     with open(bcsv, 'wb') as f:
         # Write header
-        magic = MAGIC.to_bytes(4, byteorder='little')
+        magic = MAGIC.to_bytes(4, byteorder=endianness)
         f.write(magic)
 
         # Calculate the total BCSV size (excluding string data)
@@ -153,8 +177,8 @@ def import_csv_to_bcsv(bcsv, csv_file, encyclopedia):
         offset = size
         strings = []
 
-        columns = len(header).to_bytes(2, byteorder='little')
-        rows = len(rows).to_bytes(2, byteorder='little')
+        columns = len(header).to_bytes(2, byteorder=endianness)
+        rows = len(rows).to_bytes(2, byteorder=endianness)
         f.write(columns)
         f.write(rows)
         written_bytes += 8
@@ -164,8 +188,8 @@ def import_csv_to_bcsv(bcsv, csv_file, encyclopedia):
             attr_hash = int(attr['hash'], 16)
             dt = enumerate_datatype(attr['datatype'])
 
-            hash_bytes = attr_hash.to_bytes(4, byteorder='little')
-            dt_bytes = dt.to_bytes(4, byteorder='little')
+            hash_bytes = attr_hash.to_bytes(4, byteorder=endianness)
+            dt_bytes = dt.to_bytes(4, byteorder=endianness)
             f.write(hash_bytes)
             f.write(dt_bytes)
             written_bytes += 8
@@ -174,20 +198,27 @@ def import_csv_to_bcsv(bcsv, csv_file, encyclopedia):
         for attr in column_info:
             for val in attr['values']:
                 if attr['datatype'] != 'string':
-                    val_bytes = val_to_bytes(val, attr['datatype'])
+                    val_bytes = val_to_bytes(val, attr['datatype'], endianness)
                     f.write(val_bytes)
                     written_bytes += 4
                 else:
                     str_offset = offset - written_bytes
-                    str_offset = str_offset.to_bytes(4, byteorder='little')
+                    str_offset = str_offset.to_bytes(4, byteorder=endianness)
                     f.write(str_offset)
-                    strings.append(val.encode() + b'\x00')
-                    offset += len(val) + 1
+                    encoded_val = val.encode('utf-8')
+                    strings.append(encoded_val + b'\x00')
+                    offset += len(encoded_val) + 1
                     written_bytes += 4
 
         # Write strings
         for s in strings:
             f.write(s)
+
+        # The PS3 version uses a 1024 byte padding at the end of a BCSV file, maybe used for memory alignment.
+        # Did not test omitting it, but we will add it for safety, it seems consistent across all BCSV files.
+        # It's not present in the PS Vita version.
+        if endianness == 'big':
+            f.write(b'\x00' * 1024)
 
 # ============================================
 #                     MAIN
@@ -216,7 +247,7 @@ def main():
         return
 
     # Open encyclopedia
-    with open(encyclopedia_file) as f:
+    with open(encyclopedia_file, encoding='utf-8') as f:
         encyclopedia = json.load(f)
 
     # Create output directory if it does not exist
@@ -227,7 +258,7 @@ def main():
     basename = os.path.basename(csv_file)
     filename = os.path.splitext(basename)[0]
     bcsv_file = os.path.join(output, filename + '.bcsv')
-    import_csv_to_bcsv(bcsv_file, csv_file, encyclopedia)
+    import_csv_to_bcsv(bcsv_file, csv_file, encyclopedia, args.endianness, args.raw)
 
 if __name__ == '__main__':
     main()

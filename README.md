@@ -1,7 +1,7 @@
 # PSAS BCSV Database
 
 ## Summary
-```psas-bcsv-database``` is a collection of scripts and documentation for interpreting and manipulating BCSV files for Playstation All-Stars Battle Royale (PSASBR) for the Playstation Vita.  Specifically, this repository contains:
+```psas-bcsv-database``` is a collection of scripts and documentation for interpreting and manipulating BCSV files for Playstation All-Stars Battle Royale (PSASBR) for the PlayStation 3 and Playstation Vita.  Specifically, this repository contains:
 
 - Ghidra scripts for finding BCSV columns within the game's ```eboot.bin``` and automatically generating documentation.
 - Scripts for exporting/importing BCSV files to/from CSV files.
@@ -9,7 +9,7 @@
 - Other utility scripts for automatically managing and adding additional documentation to ```encyclopedia.json```.
 
 ## What are BCSV files?
-BCSV files are a sort of binary-encoded CSV file/spreadsheet used by PSASBR that are used to store many forms of global data and attributes that are used by the game. Conceptually, you can think of them as just a spreadsheet; each BCSV contains several columns and each following row contains exactly one entry per column. However, instead of directly storing column names within the file, column [hashes](https://en.wikipedia.org/wiki/Hash_function) are used instead to reduce the overall size of each file. Each hash is a unique integer representation of a column name. To retrieve a particular "cell" of a BCSV file, the location of a particular hash in the function is first found. Then, the location of the hash in
+BCSV files are a sort of binary-encoded CSV file/spreadsheet used by PSASBR that are used to store many forms of global data and attributes that are used by the game. Conceptually, you can think of them as just a spreadsheet; each BCSV contains several columns and each following row contains exactly one entry per column. However, instead of directly storing column names within the file, column [hashes](https://en.wikipedia.org/wiki/Hash_function) are used instead to reduce the overall size of each file. Each hash is a unique integer representation of a column name. The hash algorithm used is the [FNV-1a hash](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function). To retrieve a particular "cell" of a BCSV file, the location of a particular hash in the function is first found. Then, the location of the hash in
 this file is used to resolve the location of all values under that particular column.
 
 ## Dependencies
@@ -26,10 +26,23 @@ This repository contains scripts to export/import BCSV files to/from CSV files t
 python3 scripts/bcsv_exporter.py -e encyclopedia.json -b bcsv/<YOUR_BCSV_FILE>
 ```
 
-Similarly, to import a CSV file back to a BCSV file, run:
+If the encyclopedia doesn't have a definition for the BCSV file the column names will be mapped to their hashes. By default the exporter will also map known hash values to their string text extracted from the localization file to ease the research process. If you want to disable this and extract raw data, pass the -r argument:
 
 ```bash
-python3 scripts/bcsv_importer.py -e encyclopedia.json -c <YOUR_CSV_FILE>
+python3 scripts/bcsv_exporter.py -r -e encyclopedia.json -b bcsv/<YOUR_BCSV_FILE>
+```
+
+To import a CSV file back to a BCSV file, run:
+
+```bash
+python3 scripts/bcsv_importer.py -e encyclopedia.json -n <big|little> -c <YOUR_CSV_FILE>
+```
+
+Change the -n parameter for the endianness: big for PS3, little for PS Vita.
+The importer will try to make use of the encyclopedia to map columns to right hashes and data type. If you are working with raw exported BCSV instead, pass the -r argument.
+
+```bash
+python3 scripts/bcsv_importer.py -r -n <big|little> -c <YOUR_CSV_FILE>
 ```
 
 To pack a modified BCSV file back into a PSARC to be used in-game, please see [Cri4key's PSASBR Tool](https://github.com/Cri4Key/PSASBR-Tool).
